@@ -7,7 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 origins = [
     "http://localhost",
     "http://localhost:4200",
-    "http://localhost:8080/calculate"
+    "http://localhost:8080/calculate",
+    "https://trabajo-de-grado-f7c16.web.app"
 ]
 
 app = FastAPI()
@@ -59,7 +60,7 @@ def generate_random_individual():
     individual.append(random.uniform(CI_range[0], CI_range[1]))
     individual.append(random.uniform(CT_range[0], CT_range[1]))
     return individual
-
+ 
 @app.post("/calculate")
 async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, usMaxRange: float, udMinRange: float, udMaxRange: float, dioMinRange: float, dioMaxRange: float, dsoMinRange: float, dsoMaxRange: float, dpoMinRange: float, dpoMaxRange: float, cfMinRange: float, cfMaxRange: float, ciMinRange: float, ciMaxRange: float, ctMinRange: float, ctMaxRange: float):
     global W1
