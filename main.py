@@ -212,11 +212,11 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
     for generation in range(num_generations):
 
         # Evaluación de la población
-        fitness_scores_ctt = [fitness_func_ctt(individual) for individual in population_ccc]
+        fitness_scores_ctt = [fitness_func_ctt(individual) for individual in population_ctt]
 
         # Se seleccionan los 5 mejores individuos
         sorted_indices = np.argsort(fitness_scores_ctt)[::-1][:5]
-        selected_population = [population_ccc[i] for i in sorted_indices]
+        selected_population = [population_ctt[i] for i in sorted_indices]
 
         # Se realiza el cruce
         parent1, parent2 = random.choices(selected_population, k=2)
@@ -235,7 +235,7 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
         # Se reemplaza el peor individuo de la población original si el nuevo individuo es mejor
         worst_index = np.argmin(fitness_scores_ctt)
         if child_fitness > fitness_scores_ctt[worst_index]:
-            population_ccc[worst_index] = child
+            population_ctt[worst_index] = child
             fitness_scores_ctt[worst_index] = child_fitness
 
         # Se actualiza el contador de convergencia
@@ -253,6 +253,6 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
     best_index_ccc = np.argmax(fitness_scores_ccc)
     best_index_ctt = np.argmax(fitness_scores_ctt)
 
-    return {"bestIndNs": population_ns[best_index_ns], "bestIndNs": population_ccc[best_index_ccc], "bestIndNs": population_ctt[best_index_ctt], "aptValueNS": abs(fitness_scores_ns[best_index_ns]),
+    return {"bestIndNs": population_ns[best_index_ns], "bestIndCcc": population_ccc[best_index_ccc], "bestIndCcc": population_ctt[best_index_ctt], "aptValueNS": abs(fitness_scores_ns[best_index_ns]),
             "aptValueCCC": abs(fitness_scores_ccc[best_index_ccc]),
             "aptValueCTT": abs(fitness_scores_ctt[best_index_ctt])}
