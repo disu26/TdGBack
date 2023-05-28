@@ -46,18 +46,18 @@ def fitness_func_ns(individual):
 
 
 def fitness_func_ccc(individual):
-    DIO = individual[2]
-    DSO = individual[3]
-    DPO = individual[4]
+    DIO = individual[0]
+    DSO = individual[1]
+    DPO = individual[2]
 
     fitnessCCC = W2 * (DIO + DSO - DPO)
     return fitnessCCC
 
 
 def fitness_func_ctt(individual):
-    CF = individual[5]
-    CI = individual[6]
-    CT = individual[7]
+    CF = individual[0]
+    CI = individual[1]
+    CT = individual[2]
 
     fitnessCTT = W3 * (CF + CI + CT)
     return fitnessCTT
