@@ -253,6 +253,6 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
     best_index_ccc = np.argmax(fitness_scores_ccc)
     best_index_ctt = np.argmax(fitness_scores_ctt)
 
-    return {"bestIndNs": population_ns[best_index_ns], "bestIndCcc": population_ccc[best_index_ccc], "bestIndCcc": population_ctt[best_index_ctt], "aptValueNS": abs(fitness_scores_ns[best_index_ns]),
+    return {"bestIndNS": population_ns[best_index_ns], "bestIndCCC": population_ccc[best_index_ccc], "bestIndCTT": population_ctt[best_index_ctt], "aptValueNS": abs(fitness_scores_ns[best_index_ns]),
             "aptValueCCC": abs(fitness_scores_ccc[best_index_ccc]),
             "aptValueCTT": abs(fitness_scores_ctt[best_index_ctt])}
