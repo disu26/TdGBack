@@ -140,7 +140,7 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
 
         # Se realiza el cruce
         parent1, parent2 = random.choices(selected_population, k=2)
-        crossover_point = random.randint(1, 7)
+        crossover_point = random.randint(1, 3)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
         # Se realiza la mutación
@@ -180,7 +180,7 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
 
         # Se realiza el cruce
         parent1, parent2 = random.choices(selected_population, k=2)
-        crossover_point = random.randint(1, 7)
+        crossover_point = random.randint(1, 3)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
         # Se realiza la mutación
@@ -220,7 +220,7 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
 
         # Se realiza el cruce
         parent1, parent2 = random.choices(selected_population, k=2)
-        crossover_point = random.randint(1, 7)
+        crossover_point = random.randint(1, 3)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
         # Se realiza la mutación
