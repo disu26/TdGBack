@@ -105,9 +105,9 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
     global CI_range
     global CT_range
 
-    W1 = w1
-    W2 = w2
-    W3 = w3
+    W1 = w1 / 100
+    W2 = w2 / 100
+    W3 = w3 / 100
 
     US_range = (usMinRange, usMaxRange)
     UD_range = (udMinRange, udMaxRange)
@@ -140,7 +140,7 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
 
         # Se realiza el cruce
         parent1, parent2 = random.choices(selected_population, k=2)
-        crossover_point = random.randint(1, 3)
+        crossover_point = random.randint(1, 2)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
         # Se realiza la mutación
