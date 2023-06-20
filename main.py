@@ -200,12 +200,12 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
 
         # Se reemplaza el peor individuo de la población original si el nuevo individuo es mejor
         worst_index = np.argmin(fitness_scores_ctt)
-        if child_fitness > fitness_scores_ctt[worst_index]:
+        if child_fitness < fitness_scores_ctt[worst_index]:
             population_ctt[worst_index] = child
             fitness_scores_ctt[worst_index] = child_fitness
 
         # Se valida el mejor valor
-        if fitness_scores_ctt[0] > best_fitness:
+        if fitness_scores_ctt[0] < best_fitness:
             best_fitness = fitness_scores_ctt[0]
 
     best_index_ns = np.argmax(fitness_scores_ns)
