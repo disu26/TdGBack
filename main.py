@@ -124,8 +124,6 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
     population_ctt = [generate_random_individual_ctt() for _ in range(population_size)]
 
     # Definición del criterio de convergencia
-    convergence_threshold = 10
-    convergence_counter = 0
     best_fitness = -np.inf
     num_generations = 120
 
@@ -143,12 +141,6 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
         crossover_point = random.randint(1, 2)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
-        # Se realiza la mutación
-        # mutation_rate = 0.1
-        # for i in range(5):
-        # if random.random() < mutation_rate:
-        # child[i] = random.uniform(0, 1)
-
         # Se evalua el nuevo individuo
         child_fitness = fitness_func_ns(child)
 
@@ -158,16 +150,9 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
             population_ns[worst_index] = child
             fitness_scores_ns[worst_index] = child_fitness
 
-        # Se actualiza el contador de convergencia
+        # Se valida el mejor valor
         if fitness_scores_ns[0] > best_fitness:
             best_fitness = fitness_scores_ns[0]
-            convergence_counter = 0
-        else:
-            convergence_counter += 1
-
-        # Salir del bucle si se cumple el criterio de convergencia
-        if convergence_counter >= convergence_threshold:
-            break
 
     for generation in range(num_generations):
 
@@ -183,12 +168,6 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
         crossover_point = random.randint(1, 3)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
-        # Se realiza la mutación
-        # mutation_rate = 0.1
-        # for i in range(5):
-        # if random.random() < mutation_rate:
-        # child[i] = random.uniform(0, 1)
-
         # Se evalua el nuevo individuo
         child_fitness = fitness_func_ccc(child)
 
@@ -198,16 +177,9 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
             population_ccc[worst_index] = child
             fitness_scores_ccc[worst_index] = child_fitness
 
-        # Se actualiza el contador de convergencia
+        # Se valida el mejor valor
         if fitness_scores_ccc[0] > best_fitness:
             best_fitness = fitness_scores_ccc[0]
-            convergence_counter = 0
-        else:
-            convergence_counter += 1
-
-        # Salir del bucle si se cumple el criterio de convergencia
-        if convergence_counter >= convergence_threshold:
-            break
 
     for generation in range(num_generations):
 
@@ -223,12 +195,6 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
         crossover_point = random.randint(1, 3)
         child = parent1[:crossover_point] + parent2[crossover_point:]
 
-        # Se realiza la mutación
-        # mutation_rate = 0.1
-        # for i in range(5):
-        # if random.random() < mutation_rate:
-        # child[i] = random.uniform(0, 1)
-
         # Se evalua el nuevo individuo
         child_fitness = fitness_func_ctt(child)
 
@@ -238,16 +204,9 @@ async def calculate_values(w1: float, w2: float, w3: float, usMinRange: float, u
             population_ctt[worst_index] = child
             fitness_scores_ctt[worst_index] = child_fitness
 
-        # Se actualiza el contador de convergencia
+        # Se valida el mejor valor
         if fitness_scores_ctt[0] > best_fitness:
             best_fitness = fitness_scores_ctt[0]
-            convergence_counter = 0
-        else:
-            convergence_counter += 1
-
-        # Salir del bucle si se cumple el criterio de convergencia
-        if convergence_counter >= convergence_threshold:
-            break
 
     best_index_ns = np.argmax(fitness_scores_ns)
     best_index_ccc = np.argmax(fitness_scores_ccc)
